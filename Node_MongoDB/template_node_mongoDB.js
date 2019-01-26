@@ -58,8 +58,7 @@ console.log(   JSON.stringify(   MongoClient,circular_replacer(),2   )   )
 
 // try to find out what db is, its clearn not a database
 client.connect(function(err) {
-
-	const close_MongoDB_n_m = node_mode(n_m_t_r.close_MongoDB_n_m,[[      
+	const close_MongoDB_n_m = node_mode(n_m_t_r["close_MongoDB_n_m"],[[      
                         'closing_client',
                         function(){                     
 							close_MongoDB({
@@ -91,8 +90,5 @@ client.connect(function(err) {
 	console.log("Connected correctly to server");
 	const db = client.db(   MongoDB_data.db_1_i.name   );
 	console.log(   JSON.stringify(   db,circular_replacer(),2   )   )
-	close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   ) 
-
-
- 
+	close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )  
 });

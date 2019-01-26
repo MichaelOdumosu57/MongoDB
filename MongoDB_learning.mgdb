@@ -366,8 +366,10 @@ http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/
 
 
 connect to your app with Node 
-FILE: ./connnection.js
+FILE: Node_MongoDB/template_node_mongoDB.js
 
+
+refer to README.md for example manifestation
 
 	__
   /    \
@@ -376,5 +378,5 @@ FILE: ./connnection.js
 
 Insert a Document  
 
-FILE: ./insert_documents.js
+
 
