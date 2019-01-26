@@ -144,4 +144,79 @@ Uninstall
 M O N G O D B              | /|'.|         
                             \ |\/
                              \|/
-                              `	
+                              `
+
+Verify Integrity of MongoDB Packages
+
+	 check here and check PGP  signatures for future use before installing mongodb
+
+
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `
+
+Create an Atlas Free Tier Cluster
+
+	its a cloud service for maintenace of scaled MongoDB instances 
+
+	
+		Create an Atlas user account.	                              	                               	
+		Atlas Cluster (system)
+		Create an Organization [system]
+		Create a Project
+			Projects manage related MongoDB deployments, or “clusters” in Atlas. 
+		Add Members to the Project.
+			clink on the link next to projects
+		Create a cluster. (done for you initally)
+		Setup security.
+			Atlas requires clients to authenticate to access clusters
+				From the Security tab, click MongoDB Users.
+				Click Add New User.
+				If you don’t have an Atlas admin user, 
+					create an Atlas admin user: 
+					enter the username and password and select Atlas admin for the 
+					User Privileges. Otherwise, select the desired User Privileges.
+					Select Add User.
+				Repeat for additional users.
+				From the Security tab, click IP Whitelist.
+				Click Add IP Address. 
+					You may either enter the IP address manually 
+					in the Whitelist Entry field or 
+					click the Add Current IP Address button.
+				Click Confirm and wait for Atlas to update the firewall.		
+				Download the connecting client.					
+					npm init 
+					npm install mongodb --save
+
+
+				Click the Connect button from the Clusters view.
+
+				Verify the IP address added earlier appears under
+				the Check the IP Whitelist section. You may also add additional IP addresses via the Add Entry button.
+
+				Click Connect Your Application.
+
+				Specify which driver version you are using for the Copy a connection string section.
+				https://docs.mongodb.com/ecosystem/drivers/driver-compatibility-reference/#node-js-driver-compatibility
+				[system]
+
+
+				Copy the URI Connection String to the clipboard.
+
+				Paste the clipboard contents into your preferred text editor and replace
+				 <PASSWORD> with the password for the user created earlier. 
+				 	The sample connects to the test database which the following examples use. 
+				If you wish to connect to a different database, change test to whichever database you wish to connect to.
+
+	__
+  /    \
+-   --  > sometimes Atlas chooses an random user, just replace the user 
+  \ __ /	
+
+
+
+mongodb+srv://Sleuthfan_217:0JomYRSNMjtxzGVl@habergal-wnsmk.mongodb.net/test?retryWrites=true				
