@@ -102,5 +102,46 @@ Directories
 		if you change user running MongoDB you must change permissions for the relative dirs to be accessed
 
 
+	__
+  /    \
+-   --  >
+  \ __ /	
+
+Starting MongoDB
+	start[system]
+
+	Verify that MongoDB has started successfully
+
+	check the mongod.log [system]
+		if file.find('waiting for connections on port 27017') there is nothing to worry about
+
+	to stop
+		stop [system]
+
+	to restart
+		restart[system]
 
 
+	to use mongo 
+		[system]				
+
+
+	__
+  /    \
+-   --  >
+  \ __ /	
+
+
+Uninstall
+	stop mongodb
+	purge [system ]
+	remove loaded dirs                               		
+
+
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `	
