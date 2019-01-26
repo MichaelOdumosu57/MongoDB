@@ -212,11 +212,133 @@ Create an Atlas Free Tier Cluster
 				 	The sample connects to the test database which the following examples use. 
 				If you wish to connect to a different database, change test to whichever database you wish to connect to.
 
+
+
+  __
+> -- >  sometimes Atlas chooses an random user, just replace the user
+  --	
+	
+
+  __
+> -- >  { useNewUrlParser: true } to help make sure the uri is taken, its will be deprecated but dev did something 
+  -- 
+
+
+				
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `
+
+
+Databases and Collections	
+MongoDB stores BSON documents - data records in collections in databases 
+
+to start 
+	mongo 
+
+select a database 
+	use myDB
+
+create  a database 
+	use myNewDB (it auto create)
+		db automatically refers to the database name in the shell
+	db.myNewCollection1.insertOne( { x: 1 } )
+
+{
+creates db:insertOne()
+
+creates collection : insertOne(), createIndex()
+}
+
+	creates db and collection if they dont exist 
+
+}
 	__
   /    \
--   --  > sometimes Atlas chooses an random user, just replace the user 
-  \ __ /	
+-   --  >
+  \ __ /
+
+Collections	
+
+	db.myNewCollection2.insertOne( { x: 1 } )
+	db.myNewCollection3.createIndex( { y: 1 } )
+
+
+Naming Restrictions:  https://docs.mongodb.com/manual/reference/limits/#restrictions-on-collection-names
+	 
+
+to make a collection with custom options 
+ db.createCollection()
+
+ 	to modify see collMod https://docs.mongodb.com/manual/reference/command/collMod/#dbcmd.collMod
+
+you can enforce document validation rules  during update and insert operations 	
+Schema Validation: https://docs.mongodb.com/manual/core/schema-validation/
+
+
+	__
+  /    \
+-   --  >
+  \ __ /
+
+Modifying Document Structure
+	
+	to change structure of documents update them 
+
+		Collections are assigned an immuntable UUID 	 		 
+
+
+	__
+  /    \
+-   --  >
+  \ __ /
 
 
 
-mongodb+srv://Sleuthfan_217:0JomYRSNMjtxzGVl@habergal-wnsmk.mongodb.net/test?retryWrites=true				
+Unique Identifiers
+	
+	featureCompatibilityVersion - https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion/#view-fcv
+
+
+  __
+> -- >  collections are assigned an immuntable UUID  to get  db.getCollectionInfos() 
+  --
+
+
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `
+
+Views
+
+  __
+> -- >  Collation allows users to specify language-specific rules for string comparison, 
+  --		such as rules for lettercase and accent marks.  
+  
+
+db.runCommand( { create: <view>, viewOn: <source>, pipeline: <pipeline> } )
+db.runCommand( { create: <view>, viewOn: <source>, pipeline: <pipeline>, collation: <collation> } )
+db.createView(<view>, <source>, <pipeline>, <collation> )
+	
+	you must create views in the same database as the soruce collection 
+
+they are read only 
+
+the following operations support views 
+
+db.collection.find()
+db.collection.findOne()
+db.collection.aggregate()
+db.collection.countDocuments()
+db.collection.estimatedDocumentCount()
+db.collection.count()
+db.collection.distinct()	  
+
