@@ -1,0 +1,106 @@
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `
+	__
+  /    \
+-   --  >   divdes sections
+  \ __ /  
+
+  __
+> -- > tips
+  --	
+
+A mongoDB  document  is like a json object
+they're swappable so far 
+
+there is support for embedded data models 
+indexes support faster queries 
+powerful query language 
+they have a replica set, which make data ready and available
+there is support for multiple storage engines
+
+
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `
+
+Installing MongoDB
+	__
+  /    \
+-   --  >
+  \ __ /	
+Install MongoDB Community Edition on Linux
+
+	__
+  /    \
+-   --  >
+  \ __ /	
+Install MongoDB Community Edition on Ubuntu
+	
+	__
+  /    \
+-   --  >
+  \ __ /	
+
+MongoDB Version
+
+MongoDB 4.0 Community 
+
+Platform Support 16.04 & 18.04 LTS
+
+  __
+> -- >  MongoDB does not support WSL  https://github.com/Microsoft/WSL/issues/3286, https://github.com/Microsoft/WSL/issues/796
+  --  
+  __
+> -- > 
+  --
+
+  __
+> -- >  might have to update glibc package to glibc 2.23-0ubuntu5 if experiecing memory problems 
+  --  
+
+search archives [system] to see if its there
+sudo apt remove mongodb and sudo apt purge mongodb to remove ubuntu mongodb which conflicts with the offical version
+
+mongodb-org installs (metapackage)
+	mongodb-org-server - containts the mongod daemon , configs and the init start script 
+	mongodb-org-mongos  mongos daemon
+	mongodb-org-shell - mongo shell 	
+	mongodb-org-tools - mongoimport bsondump, mongodump, mongoexport, mongofiles, mongorestore, mongostat, and mongotop.
+
+
+  __
+> -- >  for MongoDB atlas , can start MongoDB instance on AWS, Azure, or GCP 
+  --	
+
+
+
+Steps  (refer to your journaling system )
+	apt-get requires GPG to ensure security get the MongoDB GPG key
+	Create a list file for MongoDB
+		basically making a offical package link source for your package manager	
+	Reload package manager database
+	Install latest stable version
+	problems? : https://docs.mongodb.com/manual/reference/installation-ubuntu-community-troubleshooting/#install-ubuntu-troubleshooting
+
+Production : https://docs.mongodb.com/manual/administration/production-notes/
+UNIX ulimit, your OS  limits how much resources software uses https://docs.mongodb.com/manual/reference/ulimit/
+
+
+Directories
+	check for /var/lib/mongodb and /var/log/mongodb they should exist
+	they exist 
+	MongoDB is run by the mongodb user
+		if you change user running MongoDB you must change permissions for the relative dirs to be accessed
+
+
+
+
