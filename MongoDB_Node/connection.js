@@ -6,7 +6,8 @@ const required_dir = path.join(process.env.HOME, 'req_mod_node')
 const read_monitor = require(required_dir + '/read_monitor.js')
 const async_listener = require(required_dir +'/async_listener.js')
 const node_mode = require(required_dir +'/node_mode.js')
-const node_mode_threads = require(required_dir +'/node_mode_threads.js')
+const node_mode_threads = require('./node_mode_threads.js').node_mode_threads
+const n_m_t_r = require('./node_mode_threads.js').n_m_t_registry
 const circular_replacer = require(required_dir +'/circular_replacer.js')
 const readable_e_r_unshift = require(required_dir +'/r_e_r_unshift.js')
 const stream_finished = require(required_dir + '/stream_finished.js')
@@ -41,12 +42,6 @@ p_uE.open_items.push([
 						}
 					])
 console.log(   p_uE   )
-debugger;
-
-
-
-
-
 console.log(   JSON.stringify(   MongoClient,circular_replacer(),2   )   )		 	
 // MongoClient.connect(uri,  { useNewUrlParser: true } , function(err, db) {
 
@@ -64,14 +59,30 @@ console.log(   JSON.stringify(   MongoClient,circular_replacer(),2   )   )
 // try to find out what db is, its clearn not a database
 client.connect(function(err) {
 
+	const close_MongoDB_n_m = node_mode(n_m_t_r.close_MongoDB_n_m,[[      
+                        'closing_client',
+                        function(){                     
+							close_MongoDB({
+										    c_Mongo:MongoDB_data.client
+								  		  })                                 
+                        }],
+                        ['closing_client_unknown',
+                        function(){
+							setImmediate(() =>{
+								close_MongoDB({
+												c_Mongo:MongoDB_data.client
+											  })   
+							})	
+                        }],                                                               
+                  ])
+
 
 	if(   err   ){
 
 
 		console.log(   err   )
-		close_MongoDB({
-						c_Mongo:client
-					  })
+		close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )
+
 
     
 	}	
@@ -80,10 +91,8 @@ client.connect(function(err) {
 	console.log("Connected correctly to server");
 	const db = client.db(   MongoDB_data.db_1_i.name   );
 	console.log(   JSON.stringify(   db,circular_replacer(),2   )   )
-	setImmediate(() =>{
-		close_MongoDB({
-						c_Mongo:MongoDB_data.client
-					  })   
-	})	
-	
+	close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   ) 
+
+
+ 
 });
