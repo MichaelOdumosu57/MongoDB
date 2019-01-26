@@ -1,3 +1,9 @@
+http://mongodb.github.io/node-mongodb-native/3.1/api/
+http://mongodb.github.io/node-mongodb-native/3.1/tutorials/main/
+http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/
+// refer here 
+
+
                               |
                             .'|'.
                            /.'|\ \
@@ -341,4 +347,34 @@ db.collection.countDocuments()
 db.collection.estimatedDocumentCount()
 db.collection.count()
 db.collection.distinct()	  
+
+
+
+
+                              |
+                            .'|'.
+                           /.'|\ \
+M O N G O D B              | /|'.|         
+                            \ |\/
+                             \|/
+                              `
+
+        O
+N               D
+        E
+http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/
+
+
+connect to your app with Node 
+FILE: ./connnection.js
+
+
+	__
+  /    \
+-   --  >
+  \ __ /
+
+Insert a Document  
+
+FILE: ./insert_documents.js
 
