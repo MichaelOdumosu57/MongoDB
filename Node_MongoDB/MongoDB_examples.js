@@ -43,7 +43,7 @@ p_uE.open_items.push([
 					])
 console.log(   "process_uncaughtException object",p_uE   )
 console.log(   "MongoClient",JSON.stringify(   MongoClient,circular_replacer(),2   )   )		 	
-// MongoClient.connect(uri,  { useNewUrlParser: true } , function(err, db) {
+// MongoClient.connect(uri,  { useNewUrlParser: true } , function(err, mongo_db) {
 
 
 // 	if(   err   ){
@@ -51,8 +51,8 @@ console.log(   "MongoClient",JSON.stringify(   MongoClient,circular_replacer(),2
 // 	}	
 
 // 	// Get the documents collection
-// 	console.log(   JSON.stringify(   db,circular_replacer(),2   )   )
-// 	close_db(   db   )
+// 	console.log(   JSON.stringify(   mongo_db,circular_replacer(),2   )   )
+// 	close_mongo_db(   mongo_db   )
 // });
 
 
@@ -88,32 +88,30 @@ client.connect(function(err) {
 	 	
 
 	console.log("Connected correctly to server");
-	const db = client.db(   MongoDB_data.db_0_i.name   );
-	console.log(   "node embedded Mongo db object",JSON.stringify(   db,circular_replacer(),2   )   )
+	const mongo_db = client.db(   MongoDB_data.mongo_db_0_i.name   );
+	console.log(   "node embedded Mongo db object",JSON.stringify(   mongo_db,circular_replacer(),2   )   )
 	const MongoDB_examples_n_m = node_mode(n_m_t_r["MongoDB_examples_n_m"],[[      
                         'inserting_documents', // FUNCTIONALITY : insertDocuments.js
                         function(){                     
 							insertDocuments({
-								db,
-								collection:MongoDB_data.db_0_i.collections[0],
+								mongo_db,
+								collection:MongoDB_data.mongo_db_0_i.collections[0],
 								documents:  [
 												{a : 1}, 
 												{a : 2}, 
 												{a : 3}
 											],
-								callback: function(){
-														console.log(   arguments[0]   )
+								callback: function(){			
 														close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )
 													}
 							})                               
                         }],
-                        ['finding_documents',
+                        ['finding_documents',// FUNCTIONALITY : findDocuments.js
                         function(){
 							findDocuments({
-								//db, // find out if js makes copies or points to them if it makes copies try to make conditionals that only require it when needed
-								collection:db.collection(   MongoDB_data.db_0_i.collections[0]   ),
-								callback: function(){
-														console.log(   arguments[0]   )
+								//mongo_db, // find out if js makes copies or points to them if it makes copies try to make conditionals that only require it when needed
+								collection:mongo_db.collection(   MongoDB_data.mongo_db_0_i.collections[0]   ),
+								callback: function(){																											
 														close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )
 													}
 							}) 	

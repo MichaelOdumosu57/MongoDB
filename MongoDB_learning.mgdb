@@ -383,6 +383,8 @@ result Contains the result document from MongoDB
 ops Contains the documents inserted with added _id fields
 connection Contains the connection used to perform the insert
 
+however when you look at the arguments objects for it, it seems if 
+its local the connection string is missing
 	__
   /    \
 -   --  >
@@ -392,6 +394,7 @@ connection Contains the connection used to perform the insert
 Find a Document
 	
 This query returns all the documents in the documents collection.
+	 its the first argument for  the related operation
 
 	till  here
 		FILE: Node_MongoDB/MongoDB_examples
