@@ -385,6 +385,26 @@ connection Contains the connection used to perform the insert
 
 however when you look at the arguments objects for it, it seems if 
 its local the connection string is missing
+
+function(   dev_obj   ) {
+  // Get the documents collection  
+  // Insert some documents
+  console.group(   file_name   )
+    console.log(   dev_obj   )
+    const ins_D_collection = dev_obj.mongo_db.collection(   dev_obj.collection   );    
+    ins_D_collection.insertMany(dev_obj.documents  , function(err, result) {
+        // assert.equal(err, null);
+        // assert.equal(3, result.result.n);
+        // assert.equal(3, result.ops.length);
+        console.log("Inserted 3 documents into the collection");
+        var dev_obj_0_i =  arguments
+        console.log(   dev_obj_0_i   )        
+        dev_obj.callback();
+        debugger;
+  console.groupEnd()
+    });
+
+}
 	__
   /    \
 -   --  >
@@ -396,6 +416,39 @@ Find a Document
 This query returns all the documents in the documents collection.
 	 its the first argument for  the related operation
 
+function(   dev_obj   ) {
+	// Get the documents collection
+	console.group(   file_name   )
+		console.log(   dev_obj   )		
+		// Find some documents
+		dev_obj.collection.find({}).toArray(function(err, docs) {			
+			console.log("Found the following records");
+			var dev_obj_0_i = arguments;
+			console.log(   dev_obj_0_i   )			
+			dev_obj.callback();
+			debugger;
+	console.groupEnd()
+		});
+}
+
+to find a specific document
+function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('documents');
+  // Find some documents
+  collection.find({'a': 3}).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log("Found the following records");
+    console.log(docs);
+    callback(docs);
+  });
+}	 
+
+
+inside callback if an error is not handled the process.onUncaughtException is not fired
 	till  here
 		FILE: Node_MongoDB/MongoDB_examples
 
+  __
+> -- >  inside callback if an error is not handled the process.onUncaughtException is not fired
+  --	

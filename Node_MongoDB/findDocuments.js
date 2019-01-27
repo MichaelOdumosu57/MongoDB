@@ -4,7 +4,7 @@ module.exports = function(   dev_obj   ) {
 	console.group(   file_name   )
 		console.log(   dev_obj   )		
 		// Find some documents
-		dev_obj.collection.find({}).toArray(function(err, docs) {			
+		dev_obj.collection.find(   dev_obj.doc_to_find   ).toArray(function(err, docs) {			
 			console.log("Found the following records");
 			var dev_obj_0_i = arguments;
 			console.log(   dev_obj_0_i   )			

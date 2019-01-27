@@ -1,3 +1,5 @@
+Run MongoDB_examples
+
 to test a simple connection and close 
 
 module.exports.node_mode_threads   =  [
@@ -17,4 +19,12 @@ to see the Docuemnents in a specific collection of a specific database
 module.exports.node_mode_threads   =  [
                                         ['find_D_group',      'closing_client'          ],
                                         ['find_D_group',      'finding_documents'       ],                           
+                                      ] 
+
+to find spec docs in a spec collection in a spec database
+
+
+module.exports.node_mode_threads   =  [
+                                        ['find_D_group',      'closing_client'                   ],
+                                        ['find_D_group',      'finding_specific_documents'       ],                           
                                       ] 

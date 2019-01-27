@@ -1,28 +1,30 @@
-const fs = require('fs')
-const events = require('events')
-const path = require('path');
-// const assert = require('assert')
-const required_dir = path.join(process.env.HOME, 'req_mod_node')
-const read_monitor = require(required_dir + '/read_monitor.js')
-const async_listener = require(required_dir +'/async_listener.js')
-const node_mode = require(required_dir +'/node_mode.js')
-const node_mode_threads = require('./node_mode_threads.js').node_mode_threads
-const n_m_t_r = require('./node_mode_threads.js').n_m_t_registry
-const circular_replacer = require(required_dir +'/circular_replacer.js')
-const readable_e_r_unshift = require(required_dir +'/r_e_r_unshift.js')
-const stream_finished = require(required_dir + '/stream_finished.js')
-const pipeline = require(required_dir + '/pipeline.js')
-const drain = require(required_dir + '/drain.js')
-const cork_and_uncork = require(required_dir + '/cork_and_uncork.js')
-const insertDocuments = require('./insertDocuments.js')
-const findDocuments = require('./findDocuments.js') 
-const r_p = require(required_dir + '/readable_pause.js')
-const c_u = cork_and_uncork()
-const d_rn = drain()
-const s_f = stream_finished()
-const a_l = async_listener()
-const p_l = pipeline()
-const p_uE = require(   required_dir + '/process_uncaughtException.js'   )
+const n_API = require(process.env.HOME+ "/Required/node_API_header.js").n_API_init({
+	"p_uE":true,
+	"MongoClient":true,
+	"MongoDB_data":true,
+	"node_mode":true,
+	"n_m_t_r":true,
+	"circular_replacer":true,
+	"node_mode_threads":true,
+	"required_dir":true,
+	"required_mongoDB_dir":true,
+	"insertDocuments":true,
+	"required_local_dir":true,
+	"findDocuments":true,
+
+},
+{
+	location_dir:__dirname
+});
+const p_uE                    =  n_API.API_n_c.API_process.p_uE  
+const circular_replacer       =  n_API.API_n_c.circular_replacer 
+const insertDocuments         =  n_API.API_n_c.API_mongoDB.insertDocuments 
+const findDocuments           =  n_API.API_n_c.API_mongoDB.findDocuments 
+var MongoClient               =  n_API.API_n_c.API_mongoDB.MongoClient 
+var MongoDB_data              =  n_API.API_n_c.API_mongoDB.MongoDB_data 
+const node_mode               =  n_API.API_n_c.API_node_mode.node_mode 
+const n_m_t_r                 =  n_API.API_n_c.API_node_mode.n_m_t_r 
+const node_mode_threads       =  n_API.API_n_c.API_node_mode.node_mode_threads 
 p_uE.message = 'closed the MongoDB instance I believe'
 p_uE.MongoClient_instance = function(   dev_obj   ){
 	dev_obj.c_Mongo.close()
@@ -111,11 +113,22 @@ client.connect(function(err) {
 							findDocuments({
 								//mongo_db, // find out if js makes copies or points to them if it makes copies try to make conditionals that only require it when needed
 								collection:mongo_db.collection(   MongoDB_data.mongo_db_0_i.collections[0]   ),
+								doc_to_find: {},
 								callback: function(){																											
 														close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )
 													}
 							}) 	
                         }],
+                        ['finding_specific_documents',// FUNCTIONALITY : findDocuments.js
+                        function(){
+							findDocuments({								
+								collection:mongo_db.collection(   MongoDB_data.mongo_db_0_i.collections[0]   ),
+								doc_to_find:{'a': 3},
+								callback: function(){																											
+														close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )
+													}
+							}) 	
+                        }],                        
                         ['prevent',
                         function(){
 	
