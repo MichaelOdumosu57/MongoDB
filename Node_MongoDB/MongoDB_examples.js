@@ -15,6 +15,7 @@ const pipeline = require(required_dir + '/pipeline.js')
 const drain = require(required_dir + '/drain.js')
 const cork_and_uncork = require(required_dir + '/cork_and_uncork.js')
 const insertDocuments = require('./insertDocuments.js')
+const findDocuments = require('./findDocuments.js') 
 const r_p = require(required_dir + '/readable_pause.js')
 const c_u = cork_and_uncork()
 const d_rn = drain()
@@ -40,8 +41,8 @@ p_uE.open_items.push([
 							c_Mongo :MongoDB_data.client
 						}
 					])
-console.log(   p_uE   )
-console.log(   JSON.stringify(   MongoClient,circular_replacer(),2   )   )		 	
+console.log(   "process_uncaughtException object",p_uE   )
+console.log(   "MongoClient",JSON.stringify(   MongoClient,circular_replacer(),2   )   )		 	
 // MongoClient.connect(uri,  { useNewUrlParser: true } , function(err, db) {
 
 
@@ -88,7 +89,7 @@ client.connect(function(err) {
 
 	console.log("Connected correctly to server");
 	const db = client.db(   MongoDB_data.db_0_i.name   );
-	console.log(   JSON.stringify(   db,circular_replacer(),2   )   )
+	console.log(   "node embedded Mongo db object",JSON.stringify(   db,circular_replacer(),2   )   )
 	const MongoDB_examples_n_m = node_mode(n_m_t_r["MongoDB_examples_n_m"],[[      
                         'inserting_documents', // FUNCTIONALITY : insertDocuments.js
                         function(){                     
@@ -106,10 +107,21 @@ client.connect(function(err) {
 													}
 							})                               
                         }],
+                        ['finding_documents',
+                        function(){
+							findDocuments({
+								//db, // find out if js makes copies or points to them if it makes copies try to make conditionals that only require it when needed
+								collection:db.collection(   MongoDB_data.db_0_i.collections[0]   ),
+								callback: function(){
+														console.log(   arguments[0]   )
+														close_MongoDB_n_m.emit(   node_mode_threads[0][0],node_mode_threads[0][1]   )
+													}
+							}) 	
+                        }],
                         ['prevent',
                         function(){
 	
-                        }],                                                               
+                        }],                                                                                                                                         
                   ])
 	MongoDB_examples_n_m.emit(   node_mode_threads[1][0],node_mode_threads[1][1]   )
 	

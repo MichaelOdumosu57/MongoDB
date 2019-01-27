@@ -8,18 +8,25 @@ module.exports.n_m_t_registry = {
                                                       ],                                                                                                     
                                                       ['ins_D_group',
                                                         ['closing_client','closing_client_dangerous']
-                                                      ]],
+                                                      ],
+                                                      ['find_D_group',
+                                                        ['closing_client','closing_client_dangerous']
+                                                      ]],                                                      
                                     MongoDB_examples_n_m: [['reg_group',
                                                             ['']
                                                           ],                                                                                                     
                                                           ['ins_D_group',
                                                             ['inserting_documents']
-                                                          ]],                  
+                                                          ],
+                                                          ['find_D_group',
+                                                            ['finding_documents']
+                                                          ]],                                                          
+
                                 }
 
 module.exports.node_mode_threads   =  [
-                                        ['ins_D_group',      'closing_client'          ],
-                                        ['ins_D_group',      'inserting_documents'     ],                           
+                                        ['find_D_group',      'closing_client'          ],
+                                        ['find_D_group',      'finding_documents'       ],                           
                                       ] 
 
                           

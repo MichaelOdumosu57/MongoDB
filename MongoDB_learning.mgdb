@@ -359,7 +359,7 @@ M O N G O D B              | /|'.|
                              \|/
                               `
 
-        O
+ `      O
 N               D
         E
 http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/
@@ -369,7 +369,7 @@ connect to your app with Node
 FILE: Node_MongoDB/template_node_mongoDB.js
 
 
-refer to README.md for example manifestation
+refer to README.md  and the given file for example manifestation
 
 	__
   /    \
@@ -378,5 +378,21 @@ refer to README.md for example manifestation
 
 Insert a Document  
 
+the function in there actually has an object 
+result Contains the result document from MongoDB
+ops Contains the documents inserted with added _id fields
+connection Contains the connection used to perform the insert
 
+	__
+  /    \
+-   --  >
+  \ __ /
+
+
+Find a Document
+	
+This query returns all the documents in the documents collection.
+
+	till  here
+		FILE: Node_MongoDB/MongoDB_examples
 
